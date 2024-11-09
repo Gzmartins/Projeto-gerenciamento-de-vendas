@@ -1,5 +1,5 @@
 # sgv
-Sistema Gerenciador de Vendas
+Sistema Gerenciador de Clientes
 Sistema-exemplo para os alunos da disciplina de Programação Orientada a Objetos em Java.
 
 1- Desinstale qualquer jdk existente;
