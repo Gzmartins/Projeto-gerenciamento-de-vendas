@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dados do Cliente</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #007bff;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .info {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .info:last-child {
+            border-bottom: none;
+        }
+        .info span {
+            font-weight: bold;
+            color: #555;
+        }
+        .no-data {
+            color: #dc3545;
+            text-align: center;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dados do Cliente</h1>
+
+        <div th:if="${cliente != null}">
+            <div class="info">
+                <p>Nome: <span th:text="${cliente.nome}"></span></p>
+                <p>Endereço: <span th:text="${cliente.endereco}"></span></p>
+                <p>Telefone: <span th:text="${cliente.telefone}"></span></p>
+                <p>Email: <span th:text="${cliente.email}"></span></p>
+                <p>RG: <span th:text="${cliente.rg}"></span></p>
+                <p>Data de Expedição: <span th:text="${cliente.dataExpedicao}"></span></p>
+                <p>Órgão Expedidor: <span th:text="${cliente.orgao}"></span></p>
+                <p>CPF: <span th:text="${cliente.cpf}"></span></p>
+                <p>Estado Civil: <span th:text="${cliente.estadoCivil}"></span></p>
+                <p>Data de Nascimento: <span th:text="${cliente.dataNascimento}"></span></p>
+                <p>CEP: <span th:text="${cliente.cep}"></span></p>
+                <p>Profissão: <span th:text="${cliente.profissao}"></span></p>
+            </div>
+
+            <h2>Veículos</h2>
+            <div th:if="${veiculos.size() > 0}">
+                <ul>
+                    <li th:each="veiculo : ${veiculos}" class="info">
+                        <p>Modelo: <span th:text="${veiculo.modelo}"></span></p>
+                        <p>Portas: <span th:text="${veiculo.portas}"></span></p>
+                        <p>Cor: <span th:text="${veiculo.cor}"></span></p>
+                        <p>Câmbio: <span th:text="${veiculo.cambio}"></span></p>
+                        <p>Placa: <span th:text="${veiculo.placa}"></span></p>
+                        <p>Chassi: <span th:text="${veiculo.chassi}"></span></p>
+                        <p>Ano do Modelo: <span th:text="${veiculo.anoModelo}"></span></p>
+                        <p>Combustível: <span th:text="${veiculo.combustivel}"></span></p>
+                        <p>Opcionais: <span th:text="${veiculo.opcionais}"></span></p>
+                        <p>Financiado: <span th:text="${veiculo.financiado} ? 'Sim' : 'Não'"></span></p>
+                        <p>Financeira: <span th:text="${veiculo.financeira}"></span></p>
+                        <p>Danos Materiais/Corporais: <span th:text="${veiculo.danosMateriais}"></span></p>
+                        <p>Franquia: <span th:text="${veiculo.franquia}"></span></p>
+                        <p>Vigência: <span th:text="${veiculo.vigencia}"></span></p>
+                        <p>GNV: <span th:text="${veiculo.gnv} ? 'Sim' : 'Não'"></span></p>
+                        <p>Tabela Fipe: <span th:text="${veiculo.tabelaFipe} ? 'Sim' : 'Não'"></span></p>
+                        <p>Nome do Proprietário: <span th:text="${veiculo.nomeDono}"></span></p>
+                        <p>CPF do Proprietário: <span th:text="${veiculo.cpfDono}"></span></p>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${veiculos.size() == 0}" class="no-data">
+                <p>Nenhum veículo encontrado para este cliente.</p>
+            </div>
+
+            <h2>Condutores</h2>
+            <div th:if="${condutores.size() > 0}">
+                <ul>
+                    <li th:each="condutor : ${condutores}" class="info">
+                        <p>Nome do Condutor Principal: <span th:text="${condutor.nomeCondutor}"></span></p>
+                        <p>CPF do Condutor Principal: <span th:text="${condutor.cpfCondutor}"></span></p>
+                        <p>Data de Nascimento: <span th:text="${condutor.dataNascimentoCondutor}"></span></p>
+                        <p>Estuda?: <span th:text="${condutor.estuda} ? 'Sim' : 'Não'"></span></p>
+                        <p>Tem Garagem?: <span th:text="${condutor.garagem} ? 'Sim' : 'Não'"></span></p>
+                        <p>Tem Garagem no Colégio ou Faculdade?: <span th:text="${condutor.garagemFaculdade} ? 'Sim' : 'Não'"></span></p>
+                        <p>Tem Condutores entre 18 e 25 anos?: <span th:text="${condutor.idadeCondutores} ? 'Sim' : 'Não'"></span></p>
+                        <p>Moradia: <span th:text="${condutor.moradia}"></span></p>
+                        <p>Além deste, possui outros veículos?: <span th:text="${condutor.outrosVeiculos} ? 'Sim' : 'Não'"></span></p>
+                        <p>Quantos?: <span th:text="${condutor.quantos}"></span></p>
+                        <p>Portão Manual ou Automático: <span th:text="${condutor.portao}"></span></p>
+                        <p>Sexo: <span th:text="${condutor.sexo}"></span></p>
+                        <p>Utiliza para ir ao Trabalho?: <span th:text="${condutor.utilizaTrabalho} ? 'Sim' : 'Não'"></span></p>
+                        <p>CEP de Pernoite: <span th:text="${condutor.cepPernoite}"></span></p>
+                        <p>Utilização: <span th:text="${condutor.utilizacao}"></span></p>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${condutores.size() == 0}" class="no-data">
+                <p>Nenhum condutor encontrado para este cliente.</p>
+            </div>
+        </div>
+
+        <div th:if="${cliente == null}" class="no-data">
+            <p>Cliente não encontrado.</p>
+        </div>
+
+        <a th:href="@{/cliente/buscar}">Nova Busca</a> 
+        <a th:href="@{/cliente}">Voltar ao menu</a>
+    </div>
+</body>
+</html>
