@@ -12,12 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Veiculo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @NotBlank(message = "Modelo é obrigatório")
     private String modelo; 
     private int portas; 
     private String cor;

@@ -18,41 +18,19 @@ public class Condutor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @NotBlank
     private String nomeCondutor; 
-    
-    @NotBlank
     private String cpfCondutor; 
     private String nomeDono; 
-    
-    @NotNull
     private LocalDate dataNascimentoCondutor;
-    
     private boolean estuda;
     private boolean garagem;
     private boolean garagemFaculdade;
-    
-    @NotNull
-    private boolean idadeCondutores; 
-    
-    @NotBlank
     private String moradia; 
-    
     private boolean outrosVeiculos; 
     private String portao; 
-    
-    @NotNull
     private int quantos; 
-    
-    @NotBlank
     private String sexo; 
-    
     private boolean utilizaTrabalho; 
-    
-    @NotBlank
     private String cepPernoite; 
-    
-    @NotBlank
     private String utilizacao; 
 }
