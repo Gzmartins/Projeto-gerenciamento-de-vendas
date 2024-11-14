@@ -25,6 +25,7 @@ public class Condutor {
     private boolean estuda;
     private boolean garagem;
     private boolean garagemFaculdade;
+    private boolean idadeCondutores; 
     private String moradia; 
     private boolean outrosVeiculos; 
     private String portao; 

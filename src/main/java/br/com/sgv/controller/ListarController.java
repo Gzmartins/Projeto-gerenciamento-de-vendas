@@ -21,22 +21,19 @@ public class ListarController {
     private VeiculoRepository veiculoRepository;
 
     @Autowired
-    private CondutorRepository condutorRepository; // Corrigido para CondutorRepository
+    private CondutorRepository condutorRepository; 
 
     // Construtor que recebe os repositórios
     public ListarController(ClienteRepository clienteRepository, VeiculoRepository veiculoRepository, CondutorRepository condutorRepository) {
         this.clienteRepository = clienteRepository;
         this.veiculoRepository = veiculoRepository;
-        this.condutorRepository = condutorRepository; // Corrigido para CondutorRepository
+        this.condutorRepository = condutorRepository; 
     }
 
     public void listarDados(String nome) {
-        // Busca o cliente pelo CPF
         Cliente cliente = clienteRepository.findByNome(nome).orElse(null);
-        // Busca os veículos associados ao CPF do cliente
         List<Veiculo> veiculos = veiculoRepository.findByNomeDono(nome);
-        // Busca os condutores associados ao CPF do cliente
-        List<Condutor> condutores = condutorRepository.findByNomeDono(nome); // Corrigido para condutores
+        List<Condutor> condutores = condutorRepository.findByNomeDono(nome); 
 
         if (cliente != null) {
             System.out.println("Cliente: " + cliente.getNome());
@@ -45,16 +42,16 @@ public class ListarController {
             if (!veiculos.isEmpty()) {
                 for (Veiculo veiculo : veiculos) {
                     System.out.println("Veículo: " + veiculo.getNomeDono());
-                    System.out.println("Placa: " + veiculo.getPlaca()); // Ajuste aqui para usar o atributo correto
+                    System.out.println("Placa: " + veiculo.getPlaca()); 
                 }
             } else {
                 System.out.println("Nenhum veículo encontrado para este CPF.");
             }
 
             if (!condutores.isEmpty()) {
-                for (Condutor condutor : condutores) { // Corrigido para iterar sobre condutores
-                    System.out.println("Condutor: " + condutor.getNomeCondutor()); // Adicionei a impressão do nome do condutor
-                    System.out.println("CPF do Condutor: " + condutor.getCpfCondutor()); // Adicionei a impressão do CPF do condutor
+                for (Condutor condutor : condutores) { 
+                    System.out.println("Condutor: " + condutor.getNomeCondutor()); 
+                    System.out.println("CPF do Condutor: " + condutor.getCpfCondutor()); 
                 }
             } else {
                 System.out.println("Nenhum condutor encontrado para este CPF.");

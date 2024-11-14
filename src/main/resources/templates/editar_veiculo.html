@@ -161,10 +161,8 @@
     <script>
         function mascaraCPF(campo) {
             let valor = campo.value;
-            // Remove qualquer caractere que não seja um número
             valor = valor.replace(/\D/g, '');
 
-            // Adiciona os pontos e o traço conforme a digitação
             if (valor.length > 3 && valor.length <= 6) {
                 valor = valor.replace(/(\d{3})(\d+)/, '$1.$2');
             } else if (valor.length > 6 && valor.length <= 9) {
@@ -177,10 +175,8 @@
         }
         function mascaraData(campo) {
             let valor = campo.value;
-            // Remove qualquer caractere que não seja um número
             valor = valor.replace(/\D/g, '');
 
-            // Adiciona as barras conforme a digitação
             if (valor.length > 2 && valor.length <= 4) {
                 valor = valor.replace(/(\d{2})(\d+)/, '$1/$2');
             } else if (valor.length > 4) {

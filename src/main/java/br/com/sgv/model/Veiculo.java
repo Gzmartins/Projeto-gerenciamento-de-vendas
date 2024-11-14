@@ -12,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Veiculo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
